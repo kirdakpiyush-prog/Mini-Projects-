@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guess the number</title>
+</head>
+<body>
+  <style>
+    body {
+   background-color: rgba(0, 128, 255, 0.3);
+}
+.header{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  background-color: yellow;
+  width: 400px;
+  border-radius:30px;
+  box-shadow:5px 5px grey;
+  border: none;
+  font-family: 'Press Start 2P', cursive;
+}
+img {
+  margin-top: 60px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+.text{
+  text-align: center;
+  font-size: 20px;
+  font-family: 'Press Start 2P', cursive;
+  text-shadow: 2px 2px yellow;
+  margin-bottom: 30px;
+}
+.guess{
+  display: block;
+  width: 100px;
+  height: 50px;
+  border:2px solid black;
+  margin-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 40px;
+}
+input:focus{
+  outline: none;
+}
+
+.Check,
+.Reste-buutton
+{
+  display: block;
+  height: 30px;
+  width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: yellow;
+  font-family:'Press Start 2P', cursive;
+  border: 2px solid black;
+}
+#result{
+  align-items: center;
+  font-family:'Press Start 2P', cursive; 
+}
+
+  </style>
+      <h2 class="header">Guess the Number (1 to 10)</h2>
+      <img src="image.png">
+      <div class="text">Guess the number !</div>
+    <input type="number" class="guess">
+    <button class="Check" onclick="guessTheNumber()">Check</button>
+    <button class="Reste-buutton" onclick="Reset()">Reset</button>
+    <p id="result"></p>
+  <script>
+    let attempts =0;
+    let maxAttempts=3;
+    let random_1=Math.floor(Math.random()*10)+1;
+    function guessTheNumber(){
+      let variable_1=Number(document.querySelector(`.guess`).value);
+            if (attempts >= maxAttempts) {
+        document.getElementById("result").innerText = "❌ Game Over!";
+        return;
+      }
+      attempts++; // increase attempt
+
+      if(variable_1===random_1){
+        document.getElementById(`result`).innerText=`🎉 Win in ${attempts} attempts`;
+        return
+      }
+      else if(variable_1>random_1){
+       document.getElementById(`result`).innerText=`To0 High`;
+      }
+      else{
+       document.getElementById(`result`).innerText=`Too Low`;
+      }
+        if (attempts === maxAttempts && variable_1 !== random_1) {
+    document.getElementById("result").innerText = `❌ Game Over! Number was ${random_1}`;
+  }
+  // clear attempt after each attempt
+  document.querySelector(`.guess`).value=``;
+}
+ function Reset(){
+    attempts=0;
+    document.getElementById(`result`).innerText=``;
+  }
+  </script>
+</body>
+</html>

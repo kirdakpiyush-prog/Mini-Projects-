@@ -66,7 +66,8 @@ input:focus{
 }
 #result{
   align-items: center;
-  font-family:'Press Start 2P', cursive; 
+  font-family:'Press Start 2P', cursive;
+  text-align: center; 
 }
 
   </style>
@@ -94,10 +95,10 @@ input:focus{
         return
       }
       else if(variable_1>random_1){
-       document.getElementById(`result`).innerText=`To0 High`;
+       document.getElementById(`result`).innerText=`To0 High ❌`;
       }
       else{
-       document.getElementById(`result`).innerText=`Too Low`;
+       document.getElementById(`result`).innerText=`Too Low ❌`;
       }
         if (attempts === maxAttempts && variable_1 !== random_1) {
     document.getElementById("result").innerText = `❌ Game Over! Number was ${random_1}`;

@@ -1,0 +1,28 @@
+<script>
+  function functionName(){
+  console.log(`Hello!`);
+}
+functionName();
+  function functionName1(name){
+  console.log(`Hello!`+name);
+}
+functionName1(`Piyush`);
+
+const add = (a,b)=>a+b;
+let result = add(1,2);
+console.log(result);
+
+setTimeout(function(){
+  console.log(`Hi`);
+},2000);
+
+const intervalid=setInterval(function(){
+  console.log(`Hello`);
+},3000);
+console.log(`next-time`);
+
+setTimeout(function(){
+  clearInterval(intervalid);
+  console.log(`Stopped!`);
+},10000);
+</script>

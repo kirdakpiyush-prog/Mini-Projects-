@@ -18,17 +18,32 @@ function addtodo(){
 }
 function renderTodoList(){
 let  todoListHtml=``;
-  for(let i=0;i<todoList.length;i++){
-const todo = todoList[i];
+todoList.forEach(function(todoObject,index){
+  if(value ===`wash dishes`){
+    return;
+  }
+const todo = todoList[index];
 const html = `<p>
 ${todo.name}-${todo.duedate}-${todo.duetime}</p>
 <button onclick="
-todoList.splice(${i},1)
+todoList.splice(${index},1)
 renderTodoList();">
   Delete
 </button>
 </p>`; //generating html
 todoListHtml+=html;
-  }
+})
+//   for(let i=0;i<todoList.length;i++){
+// const todo = todoList[i];
+// const html = `<p>
+// ${todo.name}-${todo.duedate}-${todo.duetime}</p>
+// <button onclick="
+// todoList.splice(${i},1)
+// renderTodoList();">
+//   Delete
+// </button>
+// </p>`; //generating html
+// todoListHtml+=html;
+//   }
 document.querySelector(`.js-todo-list`).innerHTML = todoListHtml;
 }

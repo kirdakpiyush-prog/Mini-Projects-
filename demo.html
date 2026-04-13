@@ -1,0 +1,32 @@
+<script>
+  [
+    `make dinner`,
+    `wash dishes`,
+    `watch youtube`
+  ].forEach(function(value){
+  console.log(value);
+  });
+  const arrowFunction = ()=>{
+    console.log(`Hello`);
+  }
+  arrowFunction();
+
+  const oneParam = param=>{
+    console.log(param+1);
+  }
+  oneParam(2);
+
+  console.log([1,-2,3].filter((value,index)=>{
+    // if(value>=0){
+    //   return true;
+    // }
+    // else{
+    //   return false;
+    // }
+    return value>=0;
+  }));
+
+ console.log( [1,1,2].map((value,index)=>{
+    return value+10;
+  }));
+</script>

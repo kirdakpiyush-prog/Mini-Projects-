@@ -70,6 +70,12 @@ document.querySelectorAll(`.add-to-cart-button`).forEach((button)=>{
     quantity:1
   });
   }
-  console.log(cart);
+
+  // cart quantity update
+  let cartQuantity =0;
+  cart.forEach((item)=>{
+   cartQuantity += item.quantity || 0;
+  });
+document.querySelector(`.cart-quantity`).innerHTML=cartQuantity;
  });
-});
+});  

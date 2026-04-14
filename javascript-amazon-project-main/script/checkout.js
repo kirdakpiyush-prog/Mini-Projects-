@@ -12,7 +12,8 @@ cart.forEach((cartItem) => {
    }
   });
 cartSummary+=` 
-<div class="cart-item-container">
+<div class="cart-item-container 
+ js-cart-item-container-${matchingProduct.id}">
           <div class="delivery-date">
             Delivery date: Tuesday, June 21
           </div>
@@ -30,12 +31,12 @@ cartSummary+=`
               </div>
               <div class="product-quantity">
                 <span>
-                  Quantity: <span class="quantity-label">${cart.quantity}</span>
+                  Quantity: <span class="quantity-label">${cartItem.quantity}</span>
                 </span>
                 <span class="update-quantity-link link-primary">
                   Update
                 </span>
-                <span class="delete-quantity-link link-primary" data-matching-id="${matchingProduct.id}">
+                <span class="delete-quantity-link link-primary" data-product-id="${matchingProduct.id}">
                   Delete
                 </span>
               </div>
@@ -90,10 +91,16 @@ cartSummary+=`
 });
 document.querySelector(`.order-summary`).innerHTML = cartSummary;
 
-document.querySelectorAll(`.delete-quantity-link`).forEach((link)=>{
-  link.addEventListener(`click`,()=>{
-  const productId=link.dataset.productId;
-  removeFromCart(productId);
-  console.log(cart);
+document.querySelectorAll('.delete-quantity-link').forEach((link) => {
+  link.addEventListener('click', () => {
+    const productId = link.dataset.productId;
+    removeFromCart(productId);
+
+    const container = document.querySelector(`.js-cart-item-container-${productId}`);
+    if (container) {
+      container.remove();
+    } else {
+      console.warn(`Container not found for productId: ${productId}`);
+    }
   });
-})
+});
